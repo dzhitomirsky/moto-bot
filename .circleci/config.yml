@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7.10
+    working_directory: ~/build
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build docker image
+          command: docker build  -t daniilzhitomirsky/onliner-moto-bot .
+      - run:
+          name: Push image to dockerhub
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push daniilzhitomirsky/onliner-moto-bot
