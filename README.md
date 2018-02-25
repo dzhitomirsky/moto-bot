@@ -6,7 +6,7 @@ I'm a little bit sick of monitoring vehicle-trading web-sites from my mobile.
 So, I've implemented a bot using [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) that aggregates motocycles of charecteristics that I'm interested in from [onliner.by](https://mb.onliner.by/)
 
 
-## How to louch!
+## How to lounch?
 * Go to (telegram bot father contact)[https://telegram.me/BotFather] and register a new bot - you will be given private token. Do not show your token to anyone!
 * Ruild a docker image:
 ```bash
