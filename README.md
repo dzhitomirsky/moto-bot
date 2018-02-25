@@ -44,4 +44,11 @@ pipenv shell;
 python main.py
 ```
 
+## Build image on circle ci
+* for repo
+* login to circle ci
+* change settings in _.circle_ (e.g. dockerhub repo name)
+* press build on circle ci
+* add *DOCKER_USER* & *DOCKER_PASS* env varibles on circle ci to be able to push to your DH repo
+
 **Please, do not hesitate to change code on your taste or push me with some questions!**
