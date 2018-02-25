@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/dzhitomirsky/telegram-moto-bot/tree/master.svg?style=svg)](https://circleci.com/gh/dzhitomirsky/telegram-moto-bot/tree/master)
+
 # onliner-moto-bot
 
 ## Purpose
