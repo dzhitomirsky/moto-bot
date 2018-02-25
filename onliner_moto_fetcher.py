@@ -2,25 +2,18 @@ import requests
 from lxml import html
 import time
 import logging
+from  models import model_queries
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def fetch():
+def fetch(model_name):
     logger.info("Fetching data about motos...")
-    response_data = requests.post('https://mb.onliner.by/search', data = {
-                                    'min-year':2000,
-                                    'min-capacity': 800,
-                                    'engine_configuration[]': 1,
-                                    'drivetrain[]': 1,
-                                    'currency': 'USD',
-                                    'sort[]':'creation_date',
-                                    'page':1,
-                                    'type[0][1]':''
-                                    }, headers = {
-                                    'Accept': 'application/json'
-                                    }).json()
+    response_data = requests.post('https://mb.onliner.by/search',
+                                            data = model_queries[model_name],
+                                            headers = {'Accept': 'application/json'}
+                                  ).json()
     if response_data['success']:
         logger.info("Successfully fetched data. Starting data aggregation...")
         current_unix_date = int(time.time())
@@ -28,7 +21,7 @@ def fetch():
 
         for update_time in sorted(response_data['result']['counters']['update_date'].keys(), reverse=True):
             update_delta = (current_unix_date - int(update_time)) / 3600
-            if(update_delta < 30):
+            if(update_delta < 100):
                 was_updated_hrs_ago.append(update_delta)
             else:
                 break
